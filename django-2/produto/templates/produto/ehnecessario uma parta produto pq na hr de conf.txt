@@ -1,0 +1,2 @@
+pq na hr de rodar o server o django trata todas as pastas 'template' como uma so
+entao se tem index.html nas duas pasta template vai dar ruim
