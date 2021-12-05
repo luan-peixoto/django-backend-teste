@@ -1,12 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %} <!-- pega a pagina template base.html-->
 
-<head>
-    <meta charset="utf-8">
-    <title>index</title>
-</head>
-
-<body>
+<!-- modifica o block titulo-->
+{% block titulo %} 
+    titulo de index.html
+{% endblock %}
+<!-- modifica o block corpo-->
+{% block corpo %} 
     {{frase}}
     <br>
     <br>
@@ -18,13 +17,12 @@
 
 
     
-    <a href="/produto/paginas/pagina1">acessando a página pagina1.html de produto usando caminho absoluto</a><br>
+    <a href="/produto/paginas/pagina1/">acessando a página pagina1.html de produto usando caminho absoluto</a><br>
     <a href="/produto/paginas/pagina2/">acessando a página pagina2.html de produto usando caminho absoluto</a><br>
     <a href="{% url 'produto:pagina1' %}">acessando a página  pagina1.html de produto usando tag url</a><br>
     <a href="{% url 'produto:pagina2' %}">acessando a página  pagina2.html de produto usando tag url</a><br>
-</body>
+{% endblock %}
 
-</html>
 
 <!--como acessar a página index.html do projeto:
 http://127.0.0.1:8000/

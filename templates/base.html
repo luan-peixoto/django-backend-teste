@@ -1,0 +1,24 @@
+<!-- essa eh uma pagina base qu serve para criar outras paginas sem ter que copiar conteudo-->
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>{% block titulo %}Titulo padrao{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+</head>
+
+<body>
+    {% block corpo %}
+        corpo padrao
+    {% endblock %}
+
+    {% block rodape %}
+        <hr>
+        rodapé padrão
+    {% endblock %}
+</body>
+
+</html>
