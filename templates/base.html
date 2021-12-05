@@ -1,24 +1,47 @@
-<!-- essa eh uma pagina base qu serve para criar outras paginas sem ter que copiar conteudo-->
-
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <title>{% block titulo %}Titulo padrao{% endblock %}</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/jquery-ui.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" />
+    <title>{% block titulo %}titulo padrao{% endblock %}</title>
+    <!--estilo padrao, acho q n tem necessidade pq tem o arquivo base.css-->
+    <style>
+        {% block estilo %}
+            
+        {% endblock %}
+    </style>
 </head>
+<body style="overflow-y: scroll;">
 
-<body>
-    {% block corpo %}
-        corpo padrao
-    {% endblock %}
+    <div id="container" class="container">
+        {% block corpo %}
+
+        {% endblock %}
+    </div>
 
     {% block rodape %}
-        <hr>
-        rodapé padrão
-    {% endblock %}
-</body>
 
+    {% endblock %}
+
+    <script src="{% static 'js/jquery-3.4.1.js' %}"></script>
+    <script src="{% static 'js/jquery-ui.min.js' %}"></script>
+    <script src="{% static 'js/jquery.mask.js' %}"></script>
+    <script src="{% static 'js/popper.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+    <!--scripts padrao acho q n tem necessidade pq tem o arq script.js-->
+    <script>
+        $(document).ready(function(){
+
+            {% block domready %}
+
+            {% endblock %}
+        });
+    </script>
+</body>
 </html>

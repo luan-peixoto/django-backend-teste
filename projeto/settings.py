@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'produto',
+    'categoria',
 ] #toda aplicacao precisa ser adicionada aqui
 
 MIDDLEWARE = [
