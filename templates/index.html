@@ -6,21 +6,7 @@
 {% endblock %}
 <!-- modifica o block corpo-->
 {% block corpo %} 
-    {{frase}}
-    <br>
-    <br>
-    <a href="/produto/">acessando a página de produto usando caminho absoluto</a><br>
-    <a href="produto/">acessando a página de produto usando caminho relativo</a><br>
-    <a href="{% url 'produto:index' %}">acessando a página de produto usando tag url</a>
-    <br><br><br>
 
-
-
-    
-    <a href="/produto/paginas/pagina1/">acessando a página pagina1.html de produto usando caminho absoluto</a><br>
-    <a href="/produto/paginas/pagina2/">acessando a página pagina2.html de produto usando caminho absoluto</a><br>
-    <a href="{% url 'produto:pagina1' %}">acessando a página  pagina1.html de produto usando tag url</a><br>
-    <a href="{% url 'produto:pagina2' %}">acessando a página  pagina2.html de produto usando tag url</a><br>
 {% endblock %}
 
 
