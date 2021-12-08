@@ -3,8 +3,8 @@ from django.urls import path, include
 from projeto import views
 
 urlpatterns = [
-    path('', views.index, name="index"),
-    path("produto/", include('produto.urls')), #quando clicar num link com /produto/, o include vai redirecionar a execucão pro arquivo urls.py da pasta produto
+    path('', views.index, name="index"),  # o name server pra qnd o href= "{% url nome_app:nomepath %}"
+    path("produtod/", include('produto.urls')), #faz com que eu possa incluir urls do app produto com o endereco 'produto/app' nessa pagina
     path('admin/', admin.site.urls),
 ]
 

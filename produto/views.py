@@ -1,24 +1,25 @@
+from django.core.paginator import Paginator
 from django.shortcuts import render
 
-from produto.models import Produto #importando o bd de produto
-
-from django.core.paginator import Paginator
+from produto.forms import PesquisaProdutoForm
+from produto.models import Produto
 
 def lista_produto(request):
-    lista_produto = Produto.objects.all().order_by('nome') #recupera todos os produtos
+    form = PesquisaProdutoForm(request.GET)
+    if form.is_valid():
+        nome = form.cleaned_data['nome']
+        lista_de_produtos = Produto.objects\
+                                   .filter(nome__icontains=nome)\
+                                   .order_by('nome')
+        paginator = Paginator(lista_de_produtos, 3)
+        pagina = request.GET.get('pagina')
+        page_obj = paginator.get_page(pagina)
 
-    paginator = Paginator(lista_produto, 2) # (obj a ser paginado, qtd de obj por pag)
-    pagina = request.GET.get('pagina') # retorna os objetos da pagina atual
-    page_obj = paginator.get_page(pagina) #retorna a pagina 1 do objeto
+        print(lista_de_produtos)
+        print(page_obj)
 
-    print(lista_produto)
-    print(page_obj)
-    return render(request, "produto/pesquisa_produto.html", {'produtos': page_obj})
-
-def pagina1(request):
-    frase = "<b>Está frase está exibida pela pagina pagina1.html de produto</b>"
-    return render(request, "produto/pagina1.html", {'frase': frase})
-
-def pagina2(request):
-    frase = "<b>Está frase está exibida pela pagina pagina2.html de produto</b>"
-    return render(request, "produto/pagina2.html", {'frase': frase})
+        return render(request, 'produto/pesquisa_produto.html', { 'produtos': page_obj,
+                                                                  'form': form,
+                                                                  'nome': nome })
+    else:
+        raise ValueError('Ocorreu um erro inesperado ao tentar recuperar um produto.')

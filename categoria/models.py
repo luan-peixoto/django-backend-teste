@@ -1,8 +1,10 @@
 from django.db import models
 
 # Create your models here.
-# aqui ficam os modelos (classes e metodos) responsaveis por recuperar dados dos bds
 
+
+# quando você cria uma entidade e não define uma primary key, o django
+# automaticamente cria a primary key com nome 'id'
 class Categoria(models.Model):
     nome = models.CharField(max_length=70, db_index=True, unique=True)
     slug = models.SlugField(max_length=70) 
