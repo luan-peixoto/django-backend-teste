@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block titulo %}
+   Cadastro de Produtos
+{% endblock %}
+
+{% block corpo %}
+   <div class='mb-4'>
+      <h5>Cadastro de Produtos</h5>
+      <hr class='mt-0'>
+   </div>
+
+   {% if messages %}
+      <div class="mb-3">
+         {% for message in messages %}
+            <ul class="list-group rounded">
+               <li style="padding-top: 7px; padding-bottom: 7px"
+                   class="list-group-item list-group-item-info">
+                  {{ message }}
+               </li>
+            </ul>
+         {% endfor %}
+      </div>
+   {% endif %}
+
+   <div class="row mb-2">
+      <div class="col-lg-3 col-md-4">
+         <img class="mr-3" style="width: 210px"
+              src="{% static 'images/produtos/' %}{{produto.imagem}}" alt="{{ produto.nome }}">
+      </div>
+      <div class="col-lg-9 col-md-8">
+         <div class="row">
+            <div class="col-xl-2 col-lg-3 col-4 font-weight-bold mb-1">Categoria</div>
+            <div class="col-xl-10 col-lg-9 col-8">{{ produto.categoria }}</div>
+            <div class="col-xl-2 col-lg-3 col-4 font-weight-bold mb-1">Nome</div>
+            <div class="col-xl-10 col-lg-9 col-8">{{ produto.nome }} ({{ produto.descricao }})</div>
+            <div class="col-xl-2 col-lg-3 col-4 font-weight-bold mb-1">Preço</div>
+            <div class="col-xl-10 col-lg-9 col-8">{{ produto.preco }}</div>
+            <div class="col-xl-2 col-lg-3 col-4 font-weight-bold mb-1">Estoque</div>
+            <div class="col-xl-10 col-lg-9 col-8">{{ produto.qtd_estoque }}</div>
+            <div class="col-xl-2 col-lg-3 col-4 font-weight-bold mb-1">Data Cadastro</div>
+            <div class="col-xl-10 col-lg-9 col-8">{{ produto.data_cadastro | date:'d/m/Y' }}</div>
+            <div class="col-xl-2 col-lg-3 col-4 font-weight-bold mb-1">Disponível</div>
+            <div class="col-xl-10 col-lg-9 col-8">{{ produto.get_disponivel }}</div>
+         </div>
+      </div>
+   </div>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+

@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.formats import localize_input
 from categoria.models import Categoria
 
 # Create your models here.
@@ -9,13 +10,14 @@ class Produto(models.Model):
     descricao = models.CharField(max_length=100)
     slug = models.SlugField(max_length=100) 
     imagem = models.CharField(max_length=50, blank=True)
-    qtd_estoque= models.IntegerField(default=0)
+    qtd_estoque= models.IntegerField()
     data_cadastro = models.DateField()
-    preco = models.DecimalField(max_digits=5, decimal_places=2, default= 0)
+    preco = models.DecimalField(max_digits=5, decimal_places=2)
     disponivel = models.BooleanField(default=False)
 
     class Meta: 
         db_table = 'produto'
+        # define o nome da tabela
 
     def __str__(self):
         return self.nome
